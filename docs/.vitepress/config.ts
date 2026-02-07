@@ -1,91 +1,226 @@
-import { defineConfig } from "vitepress";
+import { DefaultTheme, defineConfig } from "vitepress";
 
 export default defineConfig({
-    // base: "/learn-wgpu/",
+    base: "/learn-wgpu/",
     title: "Learn Wgpu",
-    // theme: "thindark",
-    // plugins: {
-    //     "vuepress-plugin-code-copy": true,
-    //     "@vuepress/back-to-top": true,
-    //     seo: {
-    //         url: (_, $site, path) => ($site.themeConfig.domain || "") + path,
-    //     },
-    // },
-    // themeConfig: {
-    //     domain: "/learn-wgpu",
-    //     author: {
-    //         name: "Benjamin Hansen",
-    //         twitter: "https://twitter.com/sotrh760",
-    //     },
-    //     displayAllHeaders: false,
-    //     lastUpdated: "Last Updated",
-    //     sidebar: [
-    //         "/",
-    //         {
-    //             title: "Beginner",
-    //             collapsable: false,
-    //             children: [
-    //                 "/beginner/tutorial1-window/",
-    //                 "/beginner/tutorial2-surface/",
-    //                 "/beginner/tutorial3-pipeline/",
-    //                 "/beginner/tutorial4-buffer/",
-    //                 "/beginner/tutorial5-textures/",
-    //                 "/beginner/tutorial6-uniforms/",
-    //                 "/beginner/tutorial7-instancing/",
-    //                 "/beginner/tutorial8-depth/",
-    //                 "/beginner/tutorial9-models/",
-    //             ],
-    //         },
-    //         {
-    //             title: "Intermediate",
-    //             collapsable: false,
-    //             children: [
-    //                 "/intermediate/tutorial10-lighting/",
-    //                 "/intermediate/tutorial11-normals/",
-    //                 "/intermediate/tutorial12-camera/",
-    //                 "/intermediate/tutorial13-hdr/",
-    //             ],
-    //         },
-    //         {
-    //             title: "Compute Pipelines",
-    //             collapsable: true,
-    //             children: ["/compute/introduction/", "/compute/sorting/"],
-    //         },
-    //         {
-    //             title: "Showcase",
-    //             collapsable: true,
-    //             children: [
-    //                 "/showcase/",
-    //                 "/showcase/mipmaps/",
-    //                 "/showcase/stencil/",
-    //                 "/showcase/windowless/",
-    //                 "/showcase/gifs/",
-    //                 "/showcase/pong/",
-    //                 "/showcase/alignment/",
-    //                 // '/showcase/compute/',
-    //             ],
-    //         },
-    //         {
-    //             title: "News",
-    //             collapsable: true,
-    //             children: [
-    //                 "/news/28.0/",
-    //                 "/news/27.0/",
-    //                 "/news/26.0.1/",
-    //                 "/news/update-to-winit-0.30/",
-    //                 "/news/25.0/",
-    //                 "/news/24.0/",
-    //                 "/news/22.0/",
-    //                 "/news/0.18 and hdr/",
-    //                 "/news/0.17/",
-    //                 "/news/0.16/",
-    //                 "/news/0.15/",
-    //                 "/news/0.14/",
-    //                 "/news/0.13/",
-    //                 "/news/0.12/",
-    //                 "/news/pre-0.12/",
-    //             ],
-    //         },
-    //     ],
-    // },
+    lastUpdated: true,
+
+    themeConfig: {
+        search: {
+            provider: "local",
+        },
+        nav: [
+            {
+                text: "Guide",
+                link: "/index.md",
+                activeMatch: "^/(?!news)",
+            },
+            {
+                text: "News",
+                // Just grab the first one since there is no generic news page
+                link: "/news/" + sidebarNews()[0].link!,
+                activeMatch: "^/news",
+            },
+        ],
+
+        sidebar: {
+            "/news": {
+                base: "/news/",
+                items: sidebarNews(),
+            },
+            "/": [
+                {
+                    text: "Introduction",
+                    link: "/index.md",
+                    items: sidebarGuide(),
+                },
+            ],
+        },
+    },
 });
+
+function sidebarGuide(): DefaultTheme.SidebarItem[] {
+    return [
+        {
+            text: "Beginner",
+            base: "/beginner/",
+            collapsed: false,
+            items: [
+                {
+                    text: "Dependencies and the window",
+                    link: "/tutorial1-window/index.md",
+                },
+                {
+                    text: "The Surface",
+                    link: "/tutorial2-surface/index.md",
+                },
+                {
+                    text: "The Pipeline",
+                    link: "/tutorial3-pipeline/index.md",
+                },
+                {
+                    text: "Buffers and Indices",
+                    link: "/tutorial4-buffer/index.md",
+                },
+                {
+                    text: "Textures and bind groups",
+                    link: "/tutorial5-textures/index.md",
+                },
+                {
+                    text: "Uniform buffers and a 3d camera",
+                    link: "/tutorial6-uniforms/index.md",
+                },
+                {
+                    text: "Instancing",
+                    link: "/tutorial7-instancing/index.md",
+                },
+                {
+                    text: "The Depth Buffer",
+                    link: "/tutorial8-depth/index.md",
+                },
+                {
+                    text: "Model Loading",
+                    link: "/tutorial9-models/index.md",
+                },
+            ],
+        },
+        {
+            text: "Intermediate",
+            base: "/intermediate/",
+            collapsed: false,
+            items: [
+                {
+                    text: "Working with Lights",
+                    link: "/tutorial10-lighting/index.md",
+                },
+                {
+                    text: "Normal Mapping",
+                    link: "/tutorial11-normals/index.md",
+                },
+                {
+                    text: "A Better Camera",
+                    link: "/tutorial12-camera/index.md",
+                },
+                {
+                    text: "High Dynamic Range Rendering",
+                    link: "/tutorial13-hdr/index.md",
+                },
+            ],
+        },
+        {
+            text: "Compute Pipelines",
+            base: "/compute/",
+            collapsed: true,
+            items: [
+                {
+                    text: "Intro to Compute Pipelines",
+                    link: "/introduction/index.md",
+                },
+                {
+                    text: "Sorting on the GPU",
+                    link: "/sorting/index.md",
+                },
+            ],
+        },
+        {
+            text: "Showcase",
+            base: "/showcase/",
+            collapsed: true,
+            items: [
+                {
+                    text: "Foreword",
+                    link: "/index.md",
+                },
+                {
+                    text: "Mipmapping",
+                    link: "/mipmaps/index.md",
+                },
+                {
+                    text: "Stencil Buffers",
+                    link: "/stencil/index.md",
+                },
+                {
+                    text: "Wgpu without a window",
+                    link: "/windowless/index.md",
+                },
+                {
+                    text: "Creating gifs",
+                    link: "/gifs/index.md",
+                },
+                {
+                    text: "Pong",
+                    link: "/pong/index.md",
+                },
+                {
+                    text: "Memory Layout in WGSL",
+                    link: "/alignment/index.md",
+                },
+            ],
+        },
+    ];
+}
+
+function sidebarNews(): DefaultTheme.SidebarItem[] {
+    return [
+        {
+            text: "28.0 and stencil",
+            link: "/28.0/index.md",
+        },
+        {
+            text: "27.0",
+            link: "/27.0/index.md",
+        },
+        {
+            text: "26.0.1 and compute pipelines",
+            link: "/26.0.1/index.md",
+        },
+        {
+            text: "Winit 0.30",
+            link: "/update-to-winit-0.30/index.md",
+        },
+        {
+            text: "25.0",
+            link: "/25.0/index.md",
+        },
+        {
+            text: "24.0",
+            link: "/24.0/index.md",
+        },
+        {
+            text: "22.0",
+            link: "/22.0/index.md",
+        },
+        {
+            text: "0.18 and HDR",
+            link: "/0.18 and hdr/index.md",
+        },
+        {
+            text: "0.17",
+            link: "/0.17/index.md",
+        },
+        {
+            text: "0.16",
+            link: "/0.16/index.md",
+        },
+        {
+            text: "0.15",
+            link: "/0.15/index.md",
+        },
+        {
+            text: "0.14",
+            link: "/0.14/index.md",
+        },
+        {
+            text: "0.13",
+            link: "/0.13/index.md",
+        },
+        {
+            text: "0.12",
+            link: "/0.12/index.md",
+        },
+        {
+            text: "Pre 0.12",
+            link: "/pre-0.12/index.md",
+        },
+    ];
+}

@@ -64,7 +64,7 @@ struct LightUniform {
 }
 ```
 
-I updated the [lighting tutorial](../../intermediate/tutorial10-lighting) to reflect this change.
+I updated the [lighting tutorial](../../intermediate/tutorial10-lighting/index.md) to reflect this change.
 
 ## Misc
 

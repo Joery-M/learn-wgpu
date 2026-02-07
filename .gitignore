@@ -20,4 +20,5 @@ Chunk*
 !.yarn/plugins
 .pnp.*
 
-cache
+**/.vitepress/cache
+**/.vitepress/dist

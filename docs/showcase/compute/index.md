@@ -1,6 +1,6 @@
 # Compute Example: Tangents and Bitangents
 
-This proved more difficult than I anticipated. The first problem I encountered was some vertex data corruption due to the shader reading my vertex data incorrectly. I was using the `ModelVertex` struct I used in the [normal mapping tutorial](/intermediate/tutorial11-normals/).
+This proved more difficult than I anticipated. The first problem I encountered was some vertex data corruption due to the shader reading my vertex data incorrectly. I was using the `ModelVertex` struct I used in the [normal mapping tutorial](../../intermediate/tutorial11-normals/index.md).
 
 ```rust
 #[repr(C)]
@@ -26,7 +26,7 @@ struct ModelVertex {
 };
 ```
 
-At first glance, this seems just fine, but OpenGL experts would likely see a problem with the structure. Our fields aren't aligned properly to support the `std430` alignment that storage buffers require. I won't get into detail but you can check out the [alignment showcase](../alignment) if you want to know more. To summarize, the `vec2` for the `tex_coords` was messing up the byte alignment, corrupting the vertex data resulting in the following:
+At first glance, this seems just fine, but OpenGL experts would likely see a problem with the structure. Our fields aren't aligned properly to support the `std430` alignment that storage buffers require. I won't get into detail but you can check out the [alignment showcase](../alignment/index.md) if you want to know more. To summarize, the `vec2` for the `tex_coords` was messing up the byte alignment, corrupting the vertex data resulting in the following:
 
 ![./corruption.png](./corruption.png)
 

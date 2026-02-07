@@ -24,4 +24,4 @@ from places like Polyhaven, so I decided to introduce
 compute shaders by creating one that will load an HDR and
 convert it to a Cubemap to be rendered.
 
-You can check it out [here](../../intermediate/tutorial13-hdr)!
+You can check it out [here](../../intermediate/tutorial13-hdr/index.md)!

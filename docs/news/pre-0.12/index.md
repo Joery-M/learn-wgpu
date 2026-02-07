@@ -6,7 +6,7 @@ This took a little while to figure out. I ended up using wasm-pack to create the
 
 I would have released this sooner, but I wanted to add support for touch so that people on their phones could play the game. It appears that winit doesn't record touch events for WASM, so I shelved that idea.
 
-If you want to check out the demo, just head over to [the write up](../showcase/pong/#wasm-support)
+If you want to check out the demo, just head over to [the write up](../../showcase/pong/index.md#wasm-support)
 
 ## 0.12 further changes to Surface
 
@@ -113,17 +113,17 @@ School is starting to ramp up, so I haven't had as much time to work on the site
 
 * The tutorial now handles `SurfaceError` properly
 * I'm now using bytemuck's derive feature on all buffer data structs.
-* The [instancing tutorial](../beginner/tutorial7-instancing) now uses vertex buffers instead of storage buffers.
+* The [instancing tutorial](../../beginner/tutorial7-instancing/index.md) now uses vertex buffers instead of storage buffers.
 * `build.rs` now updates when individual shaders are changed, not whenever `/src` is changed.
-* Had some help from Github user @kanerogers to clean up the [texturing tutorial](../beginner/tutorial5-textures).
-* I made a [compute pipeline showcase](../showcase/compute) that computes the tangent and bitangent for each vertex in a model.
-* I made a [imgui showcase](../showcase/imgui-demo). It's very basic, but it should be a good starting point.
+* Had some help from Github user @kanerogers to clean up the [texturing tutorial](../../beginner/tutorial5-textures/index.md).
+* I made a [compute pipeline showcase](../../showcase/compute/index.md) that computes the tangent and bitangent for each vertex in a model.
+* I made a [imgui showcase](../../showcase/imgui-demo/index.md). It's very basic, but it should be a good starting point.
 
 Now in the headline, I mentioned a "Content Freeze". Wgpu is still a moving target. The migration from `0.4` to `0.5` was a lot of work. The same goes for `0.5` to `0.6`. I expect the next migration to be just as much work. As such, I won't be adding much content until the API becomes a bit more stable. That being said, I still plan on resolving any issues with the content.
 
 One more thing. This is actually quite awkward for me (especially since I'll be slowing down development), but I've started a [patreon](https://www.patreon.com/sotrh). My job doesn't give me a ton of hours, so things are a bit tight. You are by no means obligated to donate, but I would appreciate it.
 
-You can find out more about contributing to this project on the [introduction page](../#contribution-and-support)
+You can find out more about contributing to this project on the [introduction page](../../index.md#contribution-and-support)
 
 ## 0.6
 
@@ -131,7 +131,7 @@ This took me way too long. The changes weren't difficult, but I had to do a lot 
 
 ## Added Pong Showcase
 
-[See it here](../showcase/pong/)
+[See it here](../../showcase/pong/index.md)
 
 ## Normal mapping
 
@@ -145,19 +145,19 @@ Too many things changed to make note of them here. Check out [the 0.5 pull reque
 
 ## Reworked lighting tutorial
 
-The [lighting tutorial](/intermediate/tutorial10-lighting/) was not up to par, so I redid it.
+The [lighting tutorial](../../intermediate/tutorial10-lighting/index.md) was not up to par, so I redid it.
 
 ## Added GIF showcase
 
-[Creating GIFs](/showcase/gifs/)
+[Creating GIFs](../../showcase/gifs/index.md)
 
 ## Updated texture tutorials
 
-Up to this point, we created textures manually every time. I've pulled out the texture creation code into a new `texture.rs` file and included it in every tutorial from the [textures tutorial](/beginner/tutorial5-textures/#cleaning-things-up) onward.
+Up to this point, we created textures manually every time. I've pulled out the texture creation code into a new `texture.rs` file and included it in every tutorial from the [textures tutorial](../../beginner/tutorial5-textures/index.md#cleaning-things-up) onward.
 
 ## Fixed panics due to not specifying the correct `usage`
 
-Wgpu has become more strict about what `BufferUsages`s and `TextureUsages`s are required when performing certain operations. For example in the [Wgpu without a window example](/intermediate/windowless/), the `texture_desc` only specified the usage to by `COPY_SRC`. This caused a crash when the `texture` was used as a render target. Adding `OUTPUT_ATTACHMENT` fixed the issue.
+Wgpu has become more strict about what `BufferUsages`s and `TextureUsages`s are required when performing certain operations. For example in the [Wgpu without a window example](../../showcase/windowless/index.md), the `texture_desc` only specified the usage to by `COPY_SRC`. This caused a crash when the `texture` was used as a render target. Adding `OUTPUT_ATTACHMENT` fixed the issue.
 
 ## Updating Winit from 0.20.0-alpha5 to 0.20
 
