@@ -12,7 +12,7 @@ Shaders are mini-programs that you send to the GPU to perform operations on your
 
 A vertex is a point in 3D space (can also be 2D). These vertices are then bundled in groups of 2s to form lines and/or 3s to form triangles.
 
-<img alt="Vertices Graphic" src="./tutorial3-pipeline-vertices.png" />
+![Vertices Graphic](./tutorial3-pipeline-vertices.png)
 
 Most modern rendering uses triangles to make all shapes, from simple shapes (such as cubes) to complex ones (such as people). These triangles are stored as vertices, which are the points that make up the corners of the triangles.
 

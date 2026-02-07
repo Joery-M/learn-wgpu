@@ -19,3 +19,5 @@ Chunk*
 !.yarn/releases
 !.yarn/plugins
 .pnp.*
+
+cache
